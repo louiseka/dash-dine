@@ -8,6 +8,7 @@ html {
     box-sizing: inherit;
 }
 
+/* Layout */
 
 body {
     margin: 0;
@@ -17,16 +18,20 @@ body {
     color: #0E0E0E;
 }
 
+main {
+    margin: 0px 25px;
+}
+
 p {
     margin: 0;
 }
-
-/* Layout */
 
 .container {
     width: 600px;
     margin: 0 auto;
 }
+
+/* Header */
 
 header {
     background-image: url("./Assets/burger-on-table.jpg");
@@ -36,93 +41,24 @@ header {
     color: #fff;
 }
 
-main {
-    margin: 0px 25px;
-}
-
-.menu-items {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #D2D2D2;
-    padding: 50px 0;
-}
-
-.item {
-    width: 70%;
-}
-
-.cart {
-    padding: 20px 0;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0 15px 0;
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0 50px 0;
-    border-top: 1px solid #0E0E0E;
-}
-
-.add-btn,
-.checkout-btn {
-    font-family: "Inter", sans-serif;
-    cursor: pointer;
-}
-
-.add-btn {
-    width: 50px;
-    height: 50px;
-    margin: auto 0;
-    font-weight: 200;
-    padding: 0;
-    color: #3c3c3c;
-    background-color: #F5F5F5;
-    border-radius: 50%;
-    border: 1px solid #dedede;
-
-}
-
-.checkout-btn,
-.pay-btn {
-    margin: 0 auto;
-    display: block;
-    background-color: #16db99;
-    color: #fff;
-    font-size: 16px;
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    border: 0;
-    width: 100%;
-    padding: 15px 0;
-    cursor: pointer;
-}
-
-.pay-btn {
-    margin: 30px 0 0 0;
-}
-
 /* Typography */
 
 h1 {
-    margin: 0;
     font-size: 40px;
     padding: 40px 0 0 40px;
 }
 
-h2 {
+h1,
+h2,
+h3 {
     margin: 0;
-    font-size: 28px;
 }
 
+h2,
 h3,
-.item-name {
+.item-name,
+.cart-item h3 {
     font-size: 28px;
-    margin: 0;
 }
 
 .tagline {
@@ -139,8 +75,7 @@ h3,
     font-size: 20px;
 }
 
-.cart-heading {
-    font-size: 28px;
+.cart h3 {
     text-align: center;
     padding: 0 0 20px 0;
 }
@@ -152,12 +87,106 @@ h3,
     color: #8b8b8b;
 }
 
-/* Images */
+/* Menu */
+
+.menu-items {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #D2D2D2;
+    padding: 50px 0;
+}
+
+.item {
+    width: 70%;
+}
 
 .food-graphic {
     margin: auto 0;
     width: auto;
     height: 80px;
+}
+
+/* Cart */
+
+.cart {
+    padding: 20px 0;
+    display: block;
+    /* display to none */
+}
+
+.cart-item,
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-item {
+    padding: 0 0 15px 0;
+}
+
+.cart-total {
+    padding: 15px 0 50px 0;
+    border-top: 1px solid #0E0E0E;
+}
+
+.add-btn,
+.checkout-btn {
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.add-btn {
+    width: 50px;
+    height: 50px;
+    margin: auto 0;
+    font-weight: 200;
+    font-size: 24px;
+    padding: 0;
+    color: #3c3c3c;
+    background-color: #F5F5F5;
+    border-radius: 50%;
+    border: 1px solid #dedede;
+
+}
+
+.green-btn {
+    margin: 0 auto;
+    display: block;
+    background-color: #16db99;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    border: 0;
+    width: 100%;
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.inner-modal.green-btn {
+    margin: 30px 0 0 0;
+}
+
+.green-btn:hover,
+.green-btn:focus,
+.green-btn:active,
+.add-btn:hover,
+.add-btn:focus,
+.add-btn:active {
+    box-shadow: 0px 0px 5px #8b8b8b;
+}
+
+
+/* Order Confirmation */
+
+.order-confirmation {
+    display: none;
+    /* display to block */
+    text-align: center;
+    margin: 30px 0;
+    padding: 30px 15px;
+    font-size: 32px;
+    color: #065f46;
 }
 
 /*Modal*/
@@ -175,6 +204,7 @@ h3,
     background-color: #fff;
     box-shadow: 0px 0px 5px #8b8b8b;
     display: none;
+    /* display to block */
     justify-content: center;
     margin: auto;
     position: fixed;
