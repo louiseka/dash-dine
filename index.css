@@ -87,7 +87,8 @@ main {
 
 }
 
-.checkout-btn {
+.checkout-btn,
+.pay-btn {
     margin: 0 auto;
     display: block;
     background-color: #16db99;
@@ -98,6 +99,11 @@ main {
     border: 0;
     width: 100%;
     padding: 15px 0;
+    cursor: pointer;
+}
+
+.pay-btn {
+    margin: 30px 0 0 0;
 }
 
 /* Typography */
@@ -146,12 +152,52 @@ h3,
     color: #8b8b8b;
 }
 
-
-
 /* Images */
 
 .food-graphic {
     margin: auto 0;
     width: auto;
     height: 80px;
+}
+
+/*Modal*/
+
+.modal h2 {
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    padding: 30px 0;
+}
+
+.modal {
+    width: 420px;
+    height: 490px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #8b8b8b;
+    display: none;
+    justify-content: center;
+    margin: auto;
+    position: fixed;
+    top: 300px;
+    left: 0;
+    right: 0;
+}
+
+.inner-modal {
+    max-width: 380px;
+    margin: 5px auto;
+    color: #0E0E0E;
+}
+
+.inner-modal input,
+.inner-modal label {
+    display: block;
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+}
+
+.inner-modal input {
+    padding: 15px 5px;
+    margin: 10px 0 15px 0;
 }
