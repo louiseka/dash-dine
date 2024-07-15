@@ -6,9 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Ordering App</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="container">
+        <header>
+            <h1> Jimmy's Diner</h1>
+            <p class="tagline"> The best burgers and pizzas in town.</p>
+        </header>
+
+        <main>
+            <section class="menu-items">
+                <img class="food-graphic" src="./Assets/pizza-graphic.png" alt="A graphic of a Pepperoni pizza slice.">
+                <div class="item">
+                    <h2>Pizza</h2>
+                    <p class="ingredients-text">Pepperoni, mushroom, and mozarella.</p>
+                    <p class="price"> $14 </p>
+                </div>
+                <button class="add-btn">+</button>
+            </section>
+            <section class="menu-items">
+                <img class="food-graphic" src="./Assets/pizza-graphic.png" alt="A graphic of a Pepperoni pizza slice.">
+                <div class="item">
+                    <h2>Pizza</h2>
+                    <p class="ingredients-text">Pepperoni, mushroom, and mozarella.</p>
+                    <p class="price"> $14 </p>
+                </div>
+                <button class="add-btn">+</button>
+            </section>
+            <section class="menu-items">
+                <img class="food-graphic" src="./Assets/pizza-graphic.png" alt="A graphic of a Pepperoni pizza slice.">
+                <div class="item">
+                    <h2>Pizza</h2>
+                    <p class="ingredients-text">Pepperoni, mushroom, and mozarella.</p>
+                    <p class="price"> $14 </p>
+                </div>
+                <button class="add-btn">+</button>
+            </section>
+
+            <section class="cart">
+                <h3 class="cart-heading"> Your order</h3>
+                <div class="cart-item">
+                    <p class="item-name">Pizza <span> <a href="#">remove</a> </span></p>
+                    <p class="price">$14</p>
+                </div>
+                <div class="cart-item">
+                    <p class="item-name">Beer <span> <a href="#">remove</a> </span></p>
+                    <p class="price">$12</p>
+                </div>
+                <div class="cart-total">
+                    <h3>Total price:</h3>
+                    <p class="price"> $26</p>
+                </div>
+                <button class="checkout-btn"> Complete order</button>
+
+            </section>
+        </main>
+        <section class="modal">
+
+        </section>
+
+
+    </div>
+
+
+
     <script src="index.js" type="module"></script>
 </body>
 

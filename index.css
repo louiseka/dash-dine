@@ -1,3 +1,157 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+
 body {
     margin: 0;
-} 
+    font-family: "Smythe", sans-serif;
+    font-size: 16px;
+    background-color: #F5F5F5;
+    color: #0E0E0E;
+}
+
+p {
+    margin: 0;
+}
+
+/* Layout */
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+header {
+    background-image: url("./Assets/burger-on-table.jpg");
+    height: 167px;
+    background-size: 600px;
+    background-position: right 70%;
+    color: #fff;
+}
+
+main {
+    margin: 0px 25px;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #D2D2D2;
+    padding: 50px 0;
+}
+
+.item {
+    width: 70%;
+}
+
+.cart {
+    padding: 20px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 15px 0;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0 50px 0;
+    border-top: 1px solid #0E0E0E;
+}
+
+.add-btn,
+.checkout-btn {
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.add-btn {
+    width: 50px;
+    height: 50px;
+    margin: auto 0;
+    font-weight: 200;
+    padding: 0;
+    color: #3c3c3c;
+    background-color: #F5F5F5;
+    border-radius: 50%;
+    border: 1px solid #dedede;
+
+}
+
+.checkout-btn {
+    margin: 0 auto;
+    display: block;
+    background-color: #16db99;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    border: 0;
+    width: 100%;
+    padding: 15px 0;
+}
+
+/* Typography */
+
+h1 {
+    margin: 0;
+    font-size: 40px;
+    padding: 40px 0 0 40px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+h3,
+.item-name {
+    font-size: 28px;
+    margin: 0;
+}
+
+.tagline {
+    font-size: 24px;
+    padding: 10px 0 0 40px;
+}
+
+.ingredients-text {
+    color: #8b8b8b;
+    padding: 5px 0
+}
+
+.price {
+    font-size: 20px;
+}
+
+.cart-heading {
+    font-size: 28px;
+    text-align: center;
+    padding: 0 0 20px 0;
+}
+
+.cart-item a {
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #8b8b8b;
+}
+
+
+
+/* Images */
+
+.food-graphic {
+    margin: auto 0;
+    width: auto;
+    height: 80px;
+}
