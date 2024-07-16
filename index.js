@@ -92,7 +92,6 @@ function renderCart(items) {
 
         const rowTotal = price * quantity
 
-
         const cartItemRemove = document.createElement('a')
         cartItemRemove.textContent = " remove"
         cartItemRemove.href = '#'
