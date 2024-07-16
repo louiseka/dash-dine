@@ -13,29 +13,30 @@ const cartSection = document.getElementById("cart-section")
 
 //Render menu items onto the page
 
-function makeItem(itemImage, itemAlt, itemName, itemIngredients, itemPrice) {
+function makeMenuItem(menu) {
+
 
     const image = document.createElement('img')
     image.classList.add('food-graphic')
-    image.src = itemImage
-    image.alt = itemAlt
+    image.src = menu.image
+    image.alt = menu.alt
 
     const name = document.createElement('h2')
-    name.textContent = itemName
+    name.textContent = menu.name
 
     const ingredients = document.createElement('p')
     ingredients.classList.add('ingredients-text')
-    ingredients.textContent = itemIngredients
+    ingredients.textContent = menu.ingredients
 
     const price = document.createElement('p')
     price.classList.add('price')
-    price.textContent = "$" + itemPrice
+    price.textContent = "$" + menu.price
 
     const addBtn = document.createElement('button')
     addBtn.classList.add('add-btn')
     addBtn.textContent = "+"
-    addBtn.dataset.itemName = itemName
-    addBtn.dataset.itemPrice = itemPrice
+    addBtn.dataset.itemName = menu.name
+    addBtn.dataset.itemPrice = menu.price
 
     const itemDiv = document.createElement('div')
     itemDiv.classList.add('item')
@@ -53,10 +54,7 @@ function makeItem(itemImage, itemAlt, itemName, itemIngredients, itemPrice) {
 
 }
 
-function makeMenuItem(menu) {
-    const item = makeItem(menu.image, menu.alt, menu.name, menu.ingredients, menu.price)
-    return item
-}
+
 
 
 //Add button adds item to cart
