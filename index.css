@@ -13,13 +13,14 @@ html {
 body {
     margin: 0;
     font-family: "Smythe", sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
+    /* 16px */
     background-color: #F5F5F5;
     color: #0E0E0E;
 }
 
 main {
-    margin: 0px 25px;
+    margin: 0 1.56em;
 }
 
 p {
@@ -44,8 +45,9 @@ header {
 /* Typography */
 
 h1 {
-    font-size: 40px;
-    padding: 40px 0 0 40px;
+    font-size: 2.5rem;
+    /* 40px */
+    padding: 1em 0 0 1em;
 }
 
 h1,
@@ -58,26 +60,29 @@ h2,
 h3,
 .item-name,
 .cart-item h3 {
-    font-size: 28px;
+    font-size: 1.75rem;
+    /* 28px */
 }
 
 .tagline {
-    font-size: 24px;
-    padding: 10px 0 0 40px;
+    font-size: 1.5rem;
+    /* 24px */
+    padding: 0.42em 0 0 1.6em;
 }
 
 .ingredients-text {
     color: #8b8b8b;
-    padding: 5px 0
+    padding: 0.31em 0
 }
 
 .price {
-    font-size: 20px;
+    font-size: 1.25rem;
+    /* 20px */
 }
 
 .cart h3 {
     text-align: center;
-    padding: 0 0 20px 0;
+    padding: 0 0 0.72em;
 }
 
 .cart-item a {
@@ -93,7 +98,7 @@ h3,
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #D2D2D2;
-    padding: 50px 0;
+    padding: 3.13em 0;
 }
 
 .item {
@@ -109,7 +114,7 @@ h3,
 /* Cart */
 
 .cart {
-    padding: 20px 0;
+    padding: 1.25em 0;
     display: block;
     /* display to none */
 }
@@ -121,11 +126,11 @@ h3,
 }
 
 .cart-item {
-    padding: 0 0 15px 0;
+    padding: 0 0 0.94em;
 }
 
 .cart-total {
-    padding: 15px 0 50px 0;
+    padding: 0.94em 0 3.13em 0;
     border-top: 1px solid #0E0E0E;
 }
 
@@ -140,7 +145,8 @@ h3,
     height: 50px;
     margin: auto 0;
     font-weight: 200;
-    font-size: 24px;
+    font-size: 1.5rem;
+    /* 24px */
     padding: 0;
     color: #3c3c3c;
     background-color: #F5F5F5;
@@ -154,17 +160,18 @@ h3,
     display: block;
     background-color: #16db99;
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;
+    /* 16px*/
     font-family: "Inter", sans-serif;
     font-weight: 600;
     border: 0;
     width: 100%;
-    padding: 15px 0;
+    padding: 0.94em 0;
     cursor: pointer;
 }
 
 .inner-modal.green-btn {
-    margin: 30px 0 0 0;
+    margin: 1.88em 0 0 0;
 }
 
 .green-btn:hover,
@@ -183,9 +190,10 @@ h3,
     display: none;
     /* display to block */
     text-align: center;
-    margin: 30px 0;
-    padding: 30px 15px;
-    font-size: 32px;
+    margin: 0.94em 0;
+    padding: 0.94em 0.47em;
+    font-size: 2rem;
+    /* 32px */
     color: #065f46;
 }
 
@@ -194,8 +202,9 @@ h3,
 .modal h2 {
     text-align: center;
     font-family: "Inter", sans-serif;
-    font-size: 24px;
-    padding: 30px 0;
+    font-size: 1.5rem;
+    /* 24px */
+    padding: 1.25em 0;
 }
 
 .modal {
@@ -215,7 +224,7 @@ h3,
 
 .inner-modal {
     max-width: 380px;
-    margin: 5px auto;
+    margin: 0.32em auto;
     color: #0E0E0E;
 }
 
@@ -226,10 +235,11 @@ h3,
     display: block;
     width: 100%;
     font-family: "Inter", sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
+    /* 16px */
 }
 
 .inner-modal input {
-    padding: 15px 5px;
-    margin: 10px 0 15px 0;
+    padding: 0.94em 0.32em;
+    margin: 0.63em 0 0.94em 0;
 }
