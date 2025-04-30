@@ -1,5 +1,5 @@
 //Import data.js
-import { menuArray } from "./data.js"
+import { menuArray } from "./data"
 
 const menuRoot = document.getElementById("menu-root")
 const cartRoot = document.getElementById("cart-root")

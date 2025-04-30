@@ -35,7 +35,7 @@ p {
 /* Header */
 
 header {
-    background-image: url("./Assets/burger-on-table.jpg");
+    background-image: url("../Assets/burger-on-table.jpg");
     height: 167px;
     background-size: 600px;
     background-position: right 70%;
