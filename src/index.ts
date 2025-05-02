@@ -10,6 +10,7 @@ type MenuItem = {
 type Order = {
     id: number,
     menuItem: MenuItem,
+    quantity: number,
     status: string
 }
 
@@ -44,7 +45,9 @@ const menu: MenuItem[] = [
     }
 ]
 
-const orderQueue: Order[] = []
+const cart: Order[] = []
+
+const menuRoot = document.getElementById("menu-root")!
 
 function renderMenu() {
 
@@ -55,16 +58,33 @@ function renderMenu() {
                 <div class="item">
                     <h2> ${menuItem.name} </h2>
                     <p> ${menuItem.ingredients} </p>
-                    <p> ${menuItem.price} </p>
+                    <p> $${menuItem.price} </p>
                 </div>
-            <button class="add-btn"> + </button>
+            <button class="add-btn" data-name=${menuItem.name} data-price=${menuItem.price}> + </button>
         </div>
         `
     }).join("")
 
-    const menuRoot = document.getElementById("menu-root")!
+
     menuRoot.innerHTML = menuInnerHtml
     console.log(menu)
 }
+
+menuRoot.addEventListener("click", function (e) {
+    const target = e.target as HTMLElement
+    if (target && target.classList.contains("add-btn")) {
+        const cartItemName = target.dataset.name
+        const cartItemPrice = target.dataset.price
+        console.log(cartItemPrice, cartItemName)
+        if (cartItemName === undefined) {
+            return console.error("Item does not exist")
+        } else {
+            cart.push({
+
+            })
+        }
+    }
+})
+
 
 renderMenu()
