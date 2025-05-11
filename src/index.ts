@@ -10,8 +10,7 @@ type MenuItem = {
 type Order = {
     id: number,
     menuItem: MenuItem,
-    quantity: number,
-    status: string
+    quantity: number
 }
 
 let orderTotal = 0
@@ -79,9 +78,22 @@ menuRoot.addEventListener("click", function (e) {
         if (cartItemName === undefined) {
             return console.error("Item does not exist")
         } else {
-            cart.push({
-
-            })
+            const selectedItem = menu.find((item) => item.name === cartItemName)
+            if (selectedItem === undefined) {
+                return
+            }
+            const index = cart.findIndex(item => item.menuItem.id === selectedItem.id)
+            console.log(index)
+            if (index > -1) {
+                cart[index].quantity++
+            } else {
+                cart.push({
+                    id: nextOrderId++,
+                    menuItem: selectedItem,
+                    quantity: 1
+                })
+            }
+            console.log(cart)
         }
     }
 })
