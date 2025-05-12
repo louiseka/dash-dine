@@ -16,7 +16,8 @@ I have used JavaScript for this project, because:
 
 ## Implementations for future
 
-- Have quantities of food items added to checkout
+- Update to TypeScript - ** currently working on this **
+~~ - Have quantities of food items added to checkout ~~
 - A message that says 'Item added to cart/ removed from cart'
 - A11y checks for colour contrasts and form elements
 - Customisation to items on the menu
