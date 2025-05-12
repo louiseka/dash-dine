@@ -10,7 +10,8 @@ type MenuItem = {
 type Order = {
     id: number,
     menuItem: MenuItem,
-    quantity: number
+    quantity: number,
+    price: number
 }
 
 let orderTotal = 0
@@ -47,6 +48,7 @@ const menu: MenuItem[] = [
 const cart: Order[] = []
 
 const menuRoot = document.getElementById("menu-root")!
+const cartRoot = document.getElementById("cart-root")!
 
 function renderMenu() {
 
@@ -66,7 +68,6 @@ function renderMenu() {
 
 
     menuRoot.innerHTML = menuInnerHtml
-    console.log(menu)
 }
 
 menuRoot.addEventListener("click", function (e) {
@@ -74,8 +75,7 @@ menuRoot.addEventListener("click", function (e) {
     if (target && target.classList.contains("add-btn")) {
         const cartItemName = target.dataset.name
         const cartItemPrice = target.dataset.price
-        console.log(cartItemPrice, cartItemName)
-        if (cartItemName === undefined) {
+        if (cartItemName === undefined || cartItemPrice === undefined) {
             return console.error("Item does not exist")
         } else {
             const selectedItem = menu.find((item) => item.name === cartItemName)
@@ -83,20 +83,36 @@ menuRoot.addEventListener("click", function (e) {
                 return
             }
             const index = cart.findIndex(item => item.menuItem.id === selectedItem.id)
-            console.log(index)
             if (index > -1) {
                 cart[index].quantity++
+                cart[index].price = cart[index].price + selectedItem.price
+                renderCart()
             } else {
                 cart.push({
                     id: nextOrderId++,
                     menuItem: selectedItem,
-                    quantity: 1
+                    quantity: 1,
+                    price: parseFloat(cartItemPrice) || 0
                 })
+                renderCart()
             }
             console.log(cart)
         }
     }
 })
 
+function renderCart() {
+    const cartInnerHtml = cart.map((cartItem: Order) => {
+        return `
+        <div class="cart-item">
+        <p class="item-name"> ${cartItem.menuItem.name} <span> x ${cartItem.quantity} </span> <span><button>Remove </button> </span> </p>
+        <p class="price"> $${cartItem.price} </p>
+        </div>
+        `
+    }).join("")
+    cartRoot.innerHTML = cartInnerHtml
+}
+
 
 renderMenu()
+
