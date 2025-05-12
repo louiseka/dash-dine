@@ -22,4 +22,4 @@ I have used JavaScript for this project, because:
 - Customisation to items on the menu
 - Mobile responsiveness
 
-~~ Have quantities of food items added to checkout ~~
+~~Have quantities of food items added to checkout~~
