@@ -52,7 +52,6 @@ const cartTotalPrice = document.getElementById("cart-total-price")!
 const completeOrderBtn = document.getElementById("complete-order-btn")!
 const payModal = document.getElementById("pay-modal")!
 const closePayModalBtn = document.getElementById("close-pay-modal")!
-const payBtn = document.getElementById("pay-btn")!
 const paymentDetailsForm = document.getElementById("payment-details-form") as HTMLFormElement
 
 function renderMenu() {
@@ -66,7 +65,7 @@ function renderMenu() {
                     <p> ${menuItem.ingredients} </p>
                     <p> $${menuItem.price} </p>
                 </div>
-            <button class="add-btn" data-name=${menuItem.name} data-price=${menuItem.price}> + </button>
+            <button class="add-btn" data-name=${menuItem.name} data-price=${menuItem.price}> <i class="fa-solid fa-plus"></i> </button>
         </div>
         `
     }).join("")
@@ -75,8 +74,8 @@ function renderMenu() {
 }
 
 menuRoot.addEventListener("click", function (e) {
-    const target = e.target as HTMLElement
-    if (target && target.classList.contains("add-btn")) {
+    const target = (e.target as HTMLElement).closest(".add-btn") as HTMLElement
+    if (target) {
         const cartItemName = target.dataset.name
         const cartItemPrice = target.dataset.price
         if (cartItemName === undefined || cartItemPrice === undefined) {
@@ -113,14 +112,52 @@ function renderCart() {
     const cartInnerHtml = cart.map((cartItem: Order) => {
         return `
         <div class="cart-item">
-        <p class="item-name"> ${cartItem.menuItem.name} <span> x ${cartItem.quantity} </span> <span><button>Remove </button> </span> </p>
-        <p class="price"> $${cartItem.price} </p>
+            <p class="item-name"> 
+            ${cartItem.menuItem.name} 
+                <span> x ${cartItem.quantity} </span> 
+                <span> <button class="add-item-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-plus"></i> </button> </span>  
+                <span> 
+                    <button class="remove-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-minus"></i> </button> 
+                </span> 
+            </p>
+            <p class="price"> $${cartItem.price} </p>
         </div>
         `
     }).join("")
     cartRoot.innerHTML = cartInnerHtml
     cartTotalPrice.textContent = "$" + getCartTotal()
 }
+
+cartRoot.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement
+
+    const removeBtn = target.closest(".remove-btn") as HTMLElement
+    const addItemBtn = target.closest(".add-item-btn") as HTMLElement
+
+    if (removeBtn) {
+        const itemId = Number(removeBtn.dataset.id)
+        const index = cart.findIndex(item => item.id === itemId)
+        if (index > -1) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--
+                cart[index].price -= cart[index].menuItem.price
+            } else {
+                cart.splice(index, 1)
+            }
+            renderCart()
+        }
+    }
+    if (addItemBtn) {
+        const itemId = Number(addItemBtn.dataset.id)
+        const index = cart.findIndex(item => item.id == itemId)
+        if (index > -1) {
+            cart[index].quantity++
+            cart[index].price += cart[index].menuItem.price
+            renderCart()
+        }
+    }
+})
+
 
 completeOrderBtn.addEventListener("click", () => {
     if (getCartTotal() > 0) {
@@ -138,6 +175,7 @@ paymentDetailsForm.addEventListener("submit", (e) => {
     const orderName = paymentFormData.get('name')
     payModal.style.display = 'none'
     document.getElementById("cart-section")!.style.display = "none"
+    menuRoot.style.display = "none"
 
     document.getElementById("order-confirmation")!.style.display = "block"
     document.getElementById("order-confirmation")!.innerHTML = `
