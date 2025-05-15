@@ -52,13 +52,12 @@ const payModal = document.getElementById("pay-modal")!
 const paymentDetailsForm = document.getElementById("payment-details-form") as HTMLFormElement
 
 function renderMenu() {
-
     const menuInnerHtml = menu.map((menuItem) => {
         return `
         <div class="menu-items">
             <img alt=${menuItem.alt} src=${menuItem.image} />
                 <div class="item">
-                    <h2> ${menuItem.name} </h2>
+                    <h2 class="text-red-800"> ${menuItem.name} </h2>
                     <p> ${menuItem.ingredients} </p>
                     <p> $${menuItem.price} </p>
                 </div>
