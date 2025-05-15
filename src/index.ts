@@ -48,10 +48,7 @@ const cart: Order[] = []
 
 const menuRoot = document.getElementById("menu-root")!
 const cartRoot = document.getElementById("cart-root")!
-const cartTotalPrice = document.getElementById("cart-total-price")!
-const completeOrderBtn = document.getElementById("complete-order-btn")!
 const payModal = document.getElementById("pay-modal")!
-const closePayModalBtn = document.getElementById("close-pay-modal")!
 const paymentDetailsForm = document.getElementById("payment-details-form") as HTMLFormElement
 
 function renderMenu() {
@@ -99,7 +96,6 @@ menuRoot.addEventListener("click", function (e) {
                 })
                 renderCart()
             }
-            console.log(cart)
         }
     }
 })
@@ -117,7 +113,7 @@ function renderCart() {
                 <span> x ${cartItem.quantity} </span> 
                 <span> <button class="add-item-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-plus"></i> </button> </span>  
                 <span> 
-                    <button class="remove-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-minus"></i> </button> 
+                    <button class="remove-item-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-minus"></i> </button> 
                 </span> 
             </p>
             <p class="price"> $${cartItem.price} </p>
@@ -125,17 +121,17 @@ function renderCart() {
         `
     }).join("")
     cartRoot.innerHTML = cartInnerHtml
-    cartTotalPrice.textContent = "$" + getCartTotal()
+    document.getElementById("cart-total-price")!.textContent = "$" + getCartTotal()
 }
 
 cartRoot.addEventListener("click", (e) => {
     const target = e.target as HTMLElement
 
-    const removeBtn = target.closest(".remove-btn") as HTMLElement
+    const removeItemBtn = target.closest(".remove-item-btn") as HTMLElement
     const addItemBtn = target.closest(".add-item-btn") as HTMLElement
 
-    if (removeBtn) {
-        const itemId = Number(removeBtn.dataset.id)
+    if (removeItemBtn) {
+        const itemId = Number(removeItemBtn.dataset.id)
         const index = cart.findIndex(item => item.id === itemId)
         if (index > -1) {
             if (cart[index].quantity > 1) {
@@ -158,14 +154,13 @@ cartRoot.addEventListener("click", (e) => {
     }
 })
 
-
-completeOrderBtn.addEventListener("click", () => {
+document.getElementById("complete-order-btn")!.addEventListener("click", () => {
     if (getCartTotal() > 0) {
         payModal.style.display = "block"
     }
 })
 
-closePayModalBtn.addEventListener("click", () => {
+document.getElementById("close-pay-modal")!.addEventListener("click", () => {
     payModal.style.display = "none"
 })
 
@@ -176,7 +171,6 @@ paymentDetailsForm.addEventListener("submit", (e) => {
     payModal.style.display = 'none'
     document.getElementById("cart-section")!.style.display = "none"
     menuRoot.style.display = "none"
-
     document.getElementById("order-confirmation")!.style.display = "block"
     document.getElementById("order-confirmation")!.innerHTML = `
         <p> Thanks, ${orderName} Your order is on its way!</p>
