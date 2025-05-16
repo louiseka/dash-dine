@@ -14,132 +14,56 @@ html {
 
 body {
     margin: 0;
-    font-family: "Smythe", sans-serif;
-    font-size: 1rem;
-    /* 16px */
+    font-family: "Inter", sans-serif;
     background-color: #F5F5F5;
     color: #0E0E0E;
+    font-size: 1rem;
+    width: 600px;
+    margin: 0 auto;
 }
 
 main {
-    margin: 0 1.56em;
+    margin: 0 1.5em;
 }
 
 p {
     margin: 0;
 }
 
-.container {
-    width: 600px;
-    margin: 0 auto;
+button {
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+}
+
+button:hover,
+button:focus,
+button:active {
+    box-shadow: 0px 0px 5px #8b8b8b;
 }
 
 /* Header */
 
 header {
-    background-image: url("../Assets/burger-on-table.jpg");
-    height: 167px;
+    background-color: #065f46;
+    height: 170px;
     background-size: 600px;
     background-position: right 70%;
-    color: #fff;
 }
 
 /* Typography */
-
-h1 {
-    font-size: 2.5rem;
-    /* 40px */
-    padding: 1em 0 0 1em;
-}
-
 h1,
 h2,
 h3 {
     margin: 0;
 }
 
-h2,
-h3,
-.item-name,
-.cart-item h3 {
-    font-size: 1.75rem;
-    /* 28px */
-}
-
-.tagline {
-    font-size: 1.5rem;
-    /* 24px */
-    padding: 0.42em 0 0 1.6em;
-}
-
-.ingredients-text {
-    color: #8b8b8b;
-    padding: 0.31em 0
-}
-
-.price {
-    font-size: 1.25rem;
-    /* 20px */
-}
-
-.cart h3 {
-    text-align: center;
-    padding: 0 0 0.72em;
-}
-
-.cart-item a {
-    font-size: 14px;
-    text-decoration: none;
-    cursor: pointer;
-    color: #8b8b8b;
-}
-
-/* Menu */
-
-.menu-items {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #D2D2D2;
-    padding: 3.13em 0;
-}
-
-.item {
-    width: 70%;
-}
-
-.food-graphic {
-    margin: auto 0;
-    width: auto;
-    height: 80px;
-}
 
 /* Cart */
 
 .cart {
-    padding: 1.25em 0;
     display: block;
     /* display to none */
-}
-
-.cart-item,
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-}
-
-.cart-item {
-    padding: 0 0 0.94em;
-}
-
-.cart-total {
-    padding: 0.94em 0 3.13em 0;
-    border-top: 1px solid #0E0E0E;
-}
-
-.add-btn,
-.checkout-btn {
-    font-family: "Inter", sans-serif;
-    cursor: pointer;
+    /* need to update in TS */
 }
 
 .add-btn {
@@ -147,43 +71,27 @@ h3,
     height: 50px;
     margin: auto 0;
     font-weight: 200;
-    font-size: 1.5rem;
-    /* 24px */
     padding: 0;
-    color: #3c3c3c;
     background-color: #F5F5F5;
     border-radius: 50%;
     border: 1px solid #dedede;
-
 }
 
 .green-btn {
     margin: 0 auto;
     display: block;
     background-color: #16db99;
-    color: #fff;
-    font-size: 1rem;
-    /* 16px*/
-    font-family: "Inter", sans-serif;
     font-weight: 600;
     border: 0;
     width: 100%;
     padding: 0.94em 0;
-    cursor: pointer;
 }
 
 .inner-modal.green-btn {
     margin: 1.88em 0 0 0;
 }
 
-.green-btn:hover,
-.green-btn:focus,
-.green-btn:active,
-.add-btn:hover,
-.add-btn:focus,
-.add-btn:active {
-    box-shadow: 0px 0px 5px #8b8b8b;
-}
+
 
 
 /* Order Confirmation */
@@ -191,23 +99,12 @@ h3,
 .order-confirmation {
     display: none;
     /* display to block */
-    text-align: center;
-    margin: 0.94em 0;
-    padding: 0.94em 0.47em;
-    font-size: 2rem;
-    /* 32px */
-    color: #065f46;
+    /* need to update in TS */
 }
 
 /*Modal*/
 
-.modal h2 {
-    text-align: center;
-    font-family: "Inter", sans-serif;
-    font-size: 1.5rem;
-    /* 24px */
-    padding: 1.25em 0;
-}
+
 
 .modal {
     width: 420px;
@@ -227,7 +124,6 @@ h3,
 .inner-modal {
     max-width: 380px;
     margin: 0.32em auto;
-    color: #0E0E0E;
 }
 
 
@@ -236,12 +132,8 @@ h3,
 .inner-modal label {
     display: block;
     width: 100%;
-    font-family: "Inter", sans-serif;
-    font-size: 1rem;
-    /* 16px */
 }
 
 .inner-modal input {
-    padding: 0.94em 0.32em;
     margin: 0.63em 0 0.94em 0;
 }

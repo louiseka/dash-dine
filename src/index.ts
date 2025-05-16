@@ -54,14 +54,14 @@ const paymentDetailsForm = document.getElementById("payment-details-form") as HT
 function renderMenu() {
     const menuInnerHtml = menu.map((menuItem) => {
         return `
-        <div class="menu-items">
-            <img alt=${menuItem.alt} src=${menuItem.image} />
-                <div class="item">
-                    <h2 class="text-red-800"> ${menuItem.name} </h2>
+        <div class="menu-items py-12 px-0 flex justify-between border-b border-gray-200">
+            <img alt="${menuItem.alt}" src=${menuItem.image} />
+                <div class="w-[70%]">
+                    <h2 class="text-gray-800 text-2xl"> ${menuItem.name} </h2>
                     <p> ${menuItem.ingredients} </p>
                     <p> $${menuItem.price} </p>
                 </div>
-            <button class="add-btn" data-name=${menuItem.name} data-price=${menuItem.price}> <i class="fa-solid fa-plus"></i> </button>
+            <button class="add-btn text-gray-500 text-2xl" data-name=${menuItem.name} data-price=${menuItem.price}> <i class="fa-solid fa-plus"></i> </button>
         </div>
         `
     }).join("")
@@ -106,8 +106,8 @@ function getCartTotal() {
 function renderCart() {
     const cartInnerHtml = cart.map((cartItem: Order) => {
         return `
-        <div class="cart-item">
-            <p class="item-name"> 
+        <div class="cart-item flex justify-between pt-0 px-0 pb-2">
+            <p class="item-name text-2xl"> 
             ${cartItem.menuItem.name} 
                 <span> x ${cartItem.quantity} </span> 
                 <span> <button class="add-item-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-plus"></i> </button> </span>  
@@ -117,9 +117,15 @@ function renderCart() {
             </p>
             <p class="price"> $${cartItem.price} </p>
         </div>
+    </div>    
+</section>        
         `
     }).join("")
-    cartRoot.innerHTML = cartInnerHtml
+    cartRoot.innerHTML = `
+    <section class="py-5 px-0" id="cart-section">
+    <h3 class="cart-heading text-2xl text-center pt-0 pr-0 pb-3 pl-0"> Your order</h3>
+    ${cartInnerHtml}
+    `
     document.getElementById("cart-total-price")!.textContent = "$" + getCartTotal()
 }
 
