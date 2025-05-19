@@ -41,7 +41,9 @@
             <p class="text-xl" id="cart-total-price"> </p>
         </div>
 
-        <button type="submit" class="green-btn text-white text-base" id="complete-order-btn"> Complete order</button>
+        <button type="submit"
+            class="green-btn text-white text-base my-0 mx-auto py-4 px-0 w-full block font-semibold bg-[#16db99] border-0"
+            id="complete-order-btn"> Complete order</button>
 
         </section>
 
@@ -56,22 +58,28 @@
 
     <!-- Modal Pop Up Form -->
 
-    <section class="modal" id="pay-modal">
+    <section class="modal top-[300px] left-[0px] right-[0px] justify-center fixed w-[420px] h-[490px] bg-white m-auto"
+        id="pay-modal">
         <button id="close-pay-modal">Close modal</button>
-        <form class="inner-modal text-gray-800" id="payment-details-form">
+        <form class="inner-modal my-1 mx-auto max-w-sm text-gray-800" id="payment-details-form">
 
             <h2 class="text-2xl text-center py-6 px-0"> Enter card details</h2>
-            <label for="name" class="text-base">Your full name</label>
-            <input type="text" id="name" name="name" class="text-base py-4 px-1" placeholder="John Doe" required>
+            <label for="name" class="text-base block w-full">Your full name</label>
+            <input type="text" id="name" name="name" class="text-base block py-4 px-1 mt-3 mx-0 mb-4 w-full"
+                placeholder="John Doe" required>
 
-            <label for="card-number" class="text-base">Your card number</label>
-            <input type="text" id="card-number" name="card-number" class="text-base py-4 px-1" placeholder="123456"
-                maxlength="19" required>
+            <label for="card-number" class="text-base block w-full">Your card number</label>
+            <input type="text" id="card-number" name="card-number"
+                class="text-base block py-4 px-1 mt-3 mx-0 mb-4 w-full" placeholder="123456" maxlength="19" required>
 
-            <label for="cvv" class="text-base">Your CVV</label>
-            <input type="text" id="cvv" name="cvv" class="text-base py-4 px-1" placeholder="123" maxlength="3" required>
+            <label for="cvv" class="text-base block w-full">Your CVV</label>
+            <input type="text" id="cvv" name="cvv" class="text-base py-4 px-1 mt-3 mx-0 mb-4 block w-full"
+                placeholder="123" maxlength="3" required>
 
-            <button type="submit" class="green-btn" id="pay-btn"> Pay</button>
+            <button type="submit"
+                class="green-btn mt-4 mx-0 mb-0 py-4 px-0 w-full block font-semibold bg-[#16db99] border-0"
+                id="pay-btn">
+                Pay</button>
         </form>
     </section>
 

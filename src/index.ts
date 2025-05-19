@@ -61,7 +61,12 @@ function renderMenu() {
                     <p> ${menuItem.ingredients} </p>
                     <p> $${menuItem.price} </p>
                 </div>
-            <button class="add-btn text-gray-500 text-2xl" data-name=${menuItem.name} data-price=${menuItem.price}> <i class="fa-solid fa-plus"></i> </button>
+            <button 
+                class="add-btn text-gray-500 text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-[#dedede]" 
+                data-name=${menuItem.name} 
+                data-price=${menuItem.price}> 
+                    <i class="fa-solid fa-plus"></i> 
+            </button>
         </div>
         `
     }).join("")
