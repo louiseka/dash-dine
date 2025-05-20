@@ -56,29 +56,3 @@ h2,
 h3 {
     margin: 0;
 }
-
-
-/* Cart */
-
-.cart {
-    display: block;
-    /* display to none */
-    /* need to update in TS */
-}
-
-/* Order Confirmation */
-
-.order-confirmation {
-    display: none;
-    /* display to block */
-    /* need to update in TS */
-}
-
-/*Modal*/
-
-
-
-.modal {
-    display: none;
-    /* display to block */
-}
