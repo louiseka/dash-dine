@@ -52,6 +52,7 @@ const payModal = document.getElementById("pay-modal")!
 const paymentDetailsForm = document.getElementById("payment-details-form") as HTMLFormElement
 
 function renderMenu() {
+
     const menuInnerHtml = menu.map((menuItem) => {
         return `
         <div class="menu-items py-12 px-0 flex justify-between border-b border-gray-200">
@@ -109,6 +110,15 @@ function getCartTotal() {
 }
 
 function renderCart() {
+
+    const cartItemsContainer = document.getElementById("cart-items")!
+    const cartSection = document.getElementById("cart-section")!
+
+    if (cart.length === 0) {
+        cartSection.classList.add("hidden")
+        return
+    }
+
     const cartInnerHtml = cart.map((cartItem: Order) => {
         return `
         <div class="cart-item flex justify-between pt-0 px-0 pb-2">
@@ -126,12 +136,9 @@ function renderCart() {
 </section>        
         `
     }).join("")
-    cartRoot.innerHTML = `
-    <section class="py-5 px-0" id="cart-section">
-    <h3 class="cart-heading text-2xl text-center pt-0 pr-0 pb-3 pl-0"> Your order</h3>
-    ${cartInnerHtml}
-    `
+    cartItemsContainer.innerHTML = cartInnerHtml
     document.getElementById("cart-total-price")!.textContent = "$" + getCartTotal()
+    cartSection.classList.remove("hidden")
 }
 
 cartRoot.addEventListener("click", (e) => {
@@ -166,22 +173,29 @@ cartRoot.addEventListener("click", (e) => {
 
 document.getElementById("complete-order-btn")!.addEventListener("click", () => {
     if (getCartTotal() > 0) {
-        payModal.style.display = "block"
+        payModal.classList.remove("hidden")
+        payModal.classList.add("block")
     }
 })
 
 document.getElementById("close-pay-modal")!.addEventListener("click", () => {
-    payModal.style.display = "none"
+    payModal.classList.remove("block")
+    payModal.classList.add("hidden")
 })
 
 paymentDetailsForm.addEventListener("submit", (e) => {
     e.preventDefault()
     const paymentFormData = new FormData(paymentDetailsForm)
     const orderName = paymentFormData.get('name')
-    payModal.style.display = 'none'
-    document.getElementById("cart-section")!.style.display = "none"
+
+    payModal.classList.remove("block")
+    payModal.classList.add("hidden")
+
+    document.getElementById("cart-section")!.classList.add("hidden")
+
     menuRoot.style.display = "none"
-    document.getElementById("order-confirmation")!.style.display = "block"
+    document.getElementById("order-confirmation")!.classList.remove("hidden")
+    document.getElementById("order-confirmation")!.classList.add("block")
     document.getElementById("order-confirmation")!.innerHTML = `
         <p> Thanks, ${orderName} Your order is on its way!</p>
     `
