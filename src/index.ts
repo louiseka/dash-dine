@@ -20,7 +20,7 @@ let nextMenuItemId = 1
 const menu: MenuItem[] = [
     {
         name: "Pizza",
-        ingredients: ["pepperoni", "mushrom", "mozarella"],
+        ingredients: ["pepperoni", "mushroom", "mozarella"],
         price: 14,
         alt: "Graphic of a slice of pizza",
         image: "./Assets/pizza-graphic.png",
@@ -44,6 +44,7 @@ const menu: MenuItem[] = [
     }
 ]
 
+
 const cart: Order[] = []
 
 const menuRoot = document.getElementById("menu-root")!
@@ -55,15 +56,16 @@ function renderMenu() {
 
     const menuInnerHtml = menu.map((menuItem) => {
         return `
-        <div class="menu-items py-12 px-0 flex justify-between border-b border-gray-200">
+        <div class="menu-items py-8 px-0 flex justify-between border-b border-gray-200">
             <img alt="${menuItem.alt}" src=${menuItem.image} />
                 <div class="w-[70%]">
-                    <h2 class="text-gray-800 text-2xl"> ${menuItem.name} </h2>
-                    <p> ${menuItem.ingredients} </p>
-                    <p> $${menuItem.price} </p>
+                    <p class="text-lg font-medium"> ${menuItem.name} </p> 
+                    <p class="text-xs"> ${menuItem.ingredients} </p>
+                    <p> £${menuItem.price} </p>
                 </div>
             <button 
                 class="add-btn text-gray-500 text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-[#dedede]" 
+                aria-label="Add item to cart"
                 data-name=${menuItem.name} 
                 data-price=${menuItem.price}> 
                     <i class="fa-solid fa-plus"></i> 
@@ -72,7 +74,11 @@ function renderMenu() {
         `
     }).join("")
 
-    menuRoot.innerHTML = menuInnerHtml
+    menuRoot.innerHTML = `
+         <p class="pt-6 pl-2 pb-4"> At Dash and Dine, we believe in getting the basics just right. Take your
+            pick from the menu below: </p>
+        
+        ${menuInnerHtml} `
 }
 
 menuRoot.addEventListener("click", function (e) {
@@ -122,22 +128,25 @@ function renderCart() {
     const cartInnerHtml = cart.map((cartItem: Order) => {
         return `
         <div class="cart-item flex justify-between pt-0 px-0 pb-2">
-            <p class="item-name text-2xl"> 
-            ${cartItem.menuItem.name} 
-                <span> x ${cartItem.quantity} </span> 
-                <span> <button class="add-item-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-plus"></i> </button> </span>  
-                <span> 
-                    <button class="remove-item-btn" data-id="${cartItem.id}"> <i class="fa-solid fa-minus"></i> </button> 
-                </span> 
+        <div class="flex items-center">
+            <p class="text-2xl text-lg font-normal pl-2"> 
+                <span class="text-lg"> ${cartItem.quantity}x </span> 
+                 ${cartItem.menuItem.name} 
             </p>
-            <p class="price"> $${cartItem.price} </p>
+            <div class="pl-5">
+                <button class="add-item-btn text-[#0E0E0E] text-lg  my-auto mx-0 " aria-label="Add one more item" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button> 
+                <button class="remove-item-btn text-[#0E0E0E] text-lg my-auto mx-0 " aria-label="Remove one item" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button> 
+            </div>
         </div>
+          
+            <p class="price items-end "> £${cartItem.price} </p>
+       
     </div>    
 </section>        
         `
     }).join("")
     cartItemsContainer.innerHTML = cartInnerHtml
-    document.getElementById("cart-total-price")!.textContent = "$" + getCartTotal()
+    document.getElementById("cart-total-price")!.textContent = "£" + getCartTotal()
     cartSection.classList.remove("hidden")
 }
 
@@ -197,7 +206,7 @@ paymentDetailsForm.addEventListener("submit", (e) => {
     document.getElementById("order-confirmation")!.classList.remove("hidden")
     document.getElementById("order-confirmation")!.classList.add("block")
     document.getElementById("order-confirmation")!.innerHTML = `
-        <p> Thanks, ${orderName} Your order is on its way!</p>
+        <p> Thanks, ${orderName}. Your order is on its way!</p>
     `
 })
 

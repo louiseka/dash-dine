@@ -13,12 +13,11 @@ html {
 /* Layout */
 
 body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: #F5F5F5;
     color: #0E0E0E;
     font-size: 1rem;
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -32,7 +31,7 @@ p {
 
 button {
     cursor: pointer;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 button:hover,
@@ -45,9 +44,7 @@ button:active {
 
 header {
     background-color: #065f46;
-    height: 170px;
-    background-size: 600px;
-    background-position: right 70%;
+    height: 150px;
 }
 
 /* Typography */
