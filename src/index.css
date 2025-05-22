@@ -53,3 +53,9 @@ h2,
 h3 {
     margin: 0;
 }
+
+@media (max-width:565px) {
+    .modal {
+        top: 50px;
+    }
+}
