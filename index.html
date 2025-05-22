@@ -59,7 +59,7 @@
 
     <section
         class="modal hidden top-[300px] left-[0px] right-[0px] justify-center fixed max-w-[420px] h-[480px] bg-white m-auto shadow-md"
-        id="pay-modal">
+        id="pay-modal" role="dialog" aria-modal="true">
         <div class="flex justify-end ">
             <button class="flex my-4 mx-4 text-2xl text-[#0E0E0E] font-medium" id="close-pay-modal"><i
                     class="fa-regular fa-circle-xmark"></i></button>
@@ -67,18 +67,18 @@
         <form class="inner-modal my-1 mx-auto max-w-sm" id="payment-details-form">
 
             <h2 class="text-2xl text-center pt-2 pb-6 px-0"> Enter your card details</h2>
-            <label for="name" class="text-base block w-full">Your full name</label>
+            <label for="name" class="text-base block w-full" autocomplete="name">Your full name</label>
             <input type="text" id="name" name="name"
                 class="text-base block py-3 px-3 my-2 mx-0 w-full border border-[#dedede]" placeholder="John Doe"
                 required>
 
             <label for="card-number" class="text-base block w-full">Your card number</label>
-            <input type="text" id="card-number" name="card-number"
+            <input type="number" id="card-number" name="card-number"
                 class="text-base block py-3 px-3 my-2 mx-0  w-full border border-[#dedede]" placeholder="123456"
                 maxlength="19" required>
 
             <label for="cvv" class="text-base block w-full">Your CVV</label>
-            <input type="text" id="cvv" name="cvv"
+            <input type="number" id="cvv" name="cvv"
                 class="text-base py-3 px-3 my-2 mx-0 block w-full border border-[#dedede]" placeholder="123"
                 maxlength="3" required>
 

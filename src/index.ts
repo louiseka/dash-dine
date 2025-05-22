@@ -56,7 +56,7 @@ function renderMenu() {
 
     const menuInnerHtml = menu.map((menuItem) => {
         return `
-        <div class="menu-items py-8 px-0 flex justify-between border-b border-gray-200">
+        <li class="menu-items py-8 px-0 flex justify-between border-b border-gray-200">
             <img alt="${menuItem.alt}" src=${menuItem.image} />
                 <div class="w-[70%]">
                     <p class="text-lg font-medium"> ${menuItem.name} </p> 
@@ -70,15 +70,18 @@ function renderMenu() {
                 data-price=${menuItem.price}> 
                     <i class="fa-solid fa-plus"></i> 
             </button>
-        </div>
+        </li>
         `
     }).join("")
 
     menuRoot.innerHTML = `
-         <p class="pt-6 pl-2 pb-4"> At Dash and Dine, we believe in getting the basics just right. Take your
+    <h2 class="pt-6 pl-2 text-2xl font-medium"> Our Menu</h2>
+         <p class=" pl-2 pb-4"> At Dash and Dine, we believe in getting the basics just right. Take your
             pick from the menu below: </p>
-        
-        ${menuInnerHtml} `
+         <ul> 
+            ${menuInnerHtml}   
+         </ul>
+       `
 }
 
 menuRoot.addEventListener("click", function (e) {
@@ -127,25 +130,28 @@ function renderCart() {
 
     const cartInnerHtml = cart.map((cartItem: Order) => {
         return `
-        <div class="cart-item flex justify-between pt-0 px-0 pb-2">
+        <li class="cart-item flex justify-between pt-0 px-0 pb-2">
         <div class="flex items-center">
             <p class="text-2xl text-lg font-normal pl-2"> 
                 <span class="text-lg"> ${cartItem.quantity}x </span> 
                  ${cartItem.menuItem.name} 
             </p>
             <div class="pl-5">
-                <button class="add-item-btn text-[#0E0E0E] text-lg  my-auto mx-0 " aria-label="Add one more item" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button> 
-                <button class="remove-item-btn text-[#0E0E0E] text-lg my-auto mx-0 " aria-label="Remove one item" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button> 
+                <button class="add-item-btn text-[#0E0E0E] text-lg  my-auto mx-0 " aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button> 
+                <button class="remove-item-btn text-[#0E0E0E] text-lg my-auto mx-0 " aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button> 
             </div>
         </div>
           
             <p class="price items-end "> £${cartItem.price} </p>
        
-    </div>    
-</section>        
+    </li>        
         `
     }).join("")
-    cartItemsContainer.innerHTML = cartInnerHtml
+    cartItemsContainer.innerHTML = `
+    <ul> 
+    ${cartInnerHtml}
+    </ul>
+    `
     document.getElementById("cart-total-price")!.textContent = "£" + getCartTotal()
     cartSection.classList.remove("hidden")
 }
@@ -184,12 +190,21 @@ document.getElementById("complete-order-btn")!.addEventListener("click", () => {
     if (getCartTotal() > 0) {
         payModal.classList.remove("hidden")
         payModal.classList.add("block")
+        document.getElementById("name")!.focus()
+    }
+})
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !payModal.classList.contains("hidden")) {
+        payModal.classList.add("hidden")
+        document.getElementById("complete-order-btn")!.focus()
     }
 })
 
 document.getElementById("close-pay-modal")!.addEventListener("click", () => {
     payModal.classList.remove("block")
     payModal.classList.add("hidden")
+    document.getElementById("complete-order-btn")!.focus()
 })
 
 paymentDetailsForm.addEventListener("submit", (e) => {
