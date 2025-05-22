@@ -23,7 +23,7 @@ const menu: MenuItem[] = [
         ingredients: ["pepperoni", "mushroom", "mozarella"],
         price: 14,
         alt: "Graphic of a slice of pizza",
-        image: "./public/pizza-graphic.png",
+        image: "./pizza-graphic.png",
         id: nextMenuItemId++
     },
     {
@@ -31,7 +31,7 @@ const menu: MenuItem[] = [
         ingredients: ["beef", "cheese", "lettuce"],
         price: 12,
         alt: "Graphic of a hamburger",
-        image: "./public/burger-graphic.png",
+        image: "./burger-graphic.png",
         id: nextMenuItemId++
     },
     {
@@ -39,7 +39,7 @@ const menu: MenuItem[] = [
         ingredients: ["grain, hops, yeast, water"],
         price: 12,
         alt: "Graphic of a beer in a pint glass",
-        image: "./public/beer-graphic.png",
+        image: "./beer-graphic.png",
         id: nextMenuItemId++
     }
 ]
