@@ -65,7 +65,7 @@ function renderMenu() {
                 </div>
             <button 
                 class="add-btn text-gray-500 text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-[#dedede]" 
-                aria-label="Add item to cart"
+                aria-label="Add ${menuItem.name} to cart"
                 data-name=${menuItem.name} 
                 data-price=${menuItem.price}> 
                     <i class="fa-solid fa-plus"></i> 
