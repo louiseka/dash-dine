@@ -51,6 +51,9 @@ const menuRoot = document.getElementById("menu-root")!
 const cartRoot = document.getElementById("cart-root")!
 const payModal = document.getElementById("pay-modal")!
 const paymentDetailsForm = document.getElementById("payment-details-form") as HTMLFormElement
+const completeOrderBtn = document.getElementById("complete-order-btn")!
+const orderConfirmation = document.getElementById("order-confirmation")!
+const cartSection = document.getElementById("cart-section")!
 
 function renderMenu() {
 
@@ -88,8 +91,8 @@ menuRoot.addEventListener("click", function (e) {
     const target = (e.target as HTMLElement).closest(".add-btn") as HTMLElement
     if (target) {
         const cartItemName = target.dataset.name
-        const cartItemPrice = target.dataset.price
-        if (cartItemName === undefined || cartItemPrice === undefined) {
+        const cartItemPrice = Number(target.dataset.price)
+        if (cartItemName === undefined || isNaN(cartItemPrice)) {
             return console.error("Item does not exist")
         } else {
             const selectedItem = menu.find((item) => item.name === cartItemName)
@@ -106,7 +109,7 @@ menuRoot.addEventListener("click", function (e) {
                     id: nextOrderId++,
                     menuItem: selectedItem,
                     quantity: 1,
-                    price: parseFloat(cartItemPrice) || 0
+                    price: cartItemPrice || 0
                 })
                 renderCart()
             }
@@ -115,13 +118,12 @@ menuRoot.addEventListener("click", function (e) {
 })
 
 function getCartTotal() {
-    return Object.values(cart).reduce((acc, item) => acc + item.price, 0)
+    return cart.reduce((acc, item) => acc + item.price, 0)
 }
 
 function renderCart() {
 
     const cartItemsContainer = document.getElementById("cart-items")!
-    const cartSection = document.getElementById("cart-section")!
 
     if (cart.length === 0) {
         cartSection.classList.add("hidden")
@@ -132,26 +134,24 @@ function renderCart() {
     const cartInnerHtml = cart.map((cartItem: Order) => {
         return `
         <li class="flex justify-between pt-0 px-0 pb-2">
-        <div class="flex items-center">
-            <p class="text-2xl text-lg font-normal pl-2"> 
-                <span class="text-lg"> ${cartItem.quantity}x </span> 
-                 ${cartItem.menuItem.name} 
-            </p>
-            <div class="pl-5">
-                <button class="add-item-btn text-[#0E0E0E] text-lg  my-auto mx-0 " aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button> 
-                <button class="remove-item-btn text-[#0E0E0E] text-lg my-auto mx-0 " aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button> 
-            </div>
-        </div>
-          
+                <div class="flex items-center">
+                    <p class="text-2xl text-lg font-normal pl-2"> 
+                    <span class="text-lg"> ${cartItem.quantity}x </span> 
+                    ${cartItem.menuItem.name} 
+                    </p>
+                    <div class="pl-5">
+                        <button class="add-item-btn text-[#0E0E0E] text-lg  my-auto mx-0 " aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button> 
+                        <button class="remove-item-btn text-[#0E0E0E] text-lg my-auto mx-0 " aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button> 
+                    </div>
+                </div>
             <p class="items-end "> £${cartItem.price} </p>
-       
-    </li>        
-        `
+        </li>        
+    `
     }).join("")
     cartItemsContainer.innerHTML = `
-    <ul> 
-    ${cartInnerHtml}
-    </ul>
+        <ul> 
+            ${cartInnerHtml}
+        </ul>
     `
     document.getElementById("cart-total-price")!.textContent = "£" + getCartTotal()
     cartSection.classList.remove("hidden")
@@ -187,7 +187,7 @@ cartRoot.addEventListener("click", (e) => {
     }
 })
 
-document.getElementById("complete-order-btn")!.addEventListener("click", () => {
+completeOrderBtn.addEventListener("click", () => {
     if (getCartTotal() > 0) {
         payModal.classList.remove("hidden")
         payModal.classList.add("block")
@@ -198,14 +198,14 @@ document.getElementById("complete-order-btn")!.addEventListener("click", () => {
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !payModal.classList.contains("hidden")) {
         payModal.classList.add("hidden")
-        document.getElementById("complete-order-btn")!.focus()
+        completeOrderBtn.focus()
     }
 })
 
 document.getElementById("close-pay-modal")!.addEventListener("click", () => {
     payModal.classList.remove("block")
     payModal.classList.add("hidden")
-    document.getElementById("complete-order-btn")!.focus()
+    completeOrderBtn.focus()
 })
 
 paymentDetailsForm.addEventListener("submit", (e) => {
@@ -216,12 +216,12 @@ paymentDetailsForm.addEventListener("submit", (e) => {
     payModal.classList.remove("block")
     payModal.classList.add("hidden")
 
-    document.getElementById("cart-section")!.classList.add("hidden")
+    cartSection.classList.add("hidden")
 
     menuRoot.style.display = "none"
-    document.getElementById("order-confirmation")!.classList.remove("hidden")
-    document.getElementById("order-confirmation")!.classList.add("block")
-    document.getElementById("order-confirmation")!.innerHTML = `
+    orderConfirmation.classList.remove("hidden")
+    orderConfirmation.classList.add("block")
+    orderConfirmation.innerHTML = `
         <p> Thanks, ${orderName}. Your order is on its way!</p>
     `
 })
