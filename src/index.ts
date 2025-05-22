@@ -56,7 +56,7 @@ function renderMenu() {
 
     const menuInnerHtml = menu.map((menuItem) => {
         return `
-        <li class="menu-items py-8 px-0 flex justify-between border-b border-gray-200">
+        <li class="py-8 px-0 flex justify-between border-b border-gray-200">
             <img alt="${menuItem.alt}" src=${menuItem.image} />
                 <div class="w-[70%]">
                     <p class="text-lg font-medium"> ${menuItem.name} </p> 
@@ -76,12 +76,12 @@ function renderMenu() {
 
     menuRoot.innerHTML = `
     <h2 class="pt-6 pl-2 text-2xl font-medium"> Our Menu</h2>
-         <p class=" pl-2 pb-4"> At Dash and Dine, we believe in getting the basics just right. Take your
+         <p class="pl-2 pb-4"> At Dash and Dine, we believe in getting the basics just right. Take your
             pick from the menu below: </p>
          <ul> 
             ${menuInnerHtml}   
          </ul>
-       `
+    `
 }
 
 menuRoot.addEventListener("click", function (e) {
@@ -131,7 +131,7 @@ function renderCart() {
 
     const cartInnerHtml = cart.map((cartItem: Order) => {
         return `
-        <li class="cart-item flex justify-between pt-0 px-0 pb-2">
+        <li class="flex justify-between pt-0 px-0 pb-2">
         <div class="flex items-center">
             <p class="text-2xl text-lg font-normal pl-2"> 
                 <span class="text-lg"> ${cartItem.quantity}x </span> 
@@ -143,7 +143,7 @@ function renderCart() {
             </div>
         </div>
           
-            <p class="price items-end "> £${cartItem.price} </p>
+            <p class="items-end "> £${cartItem.price} </p>
        
     </li>        
         `

@@ -27,15 +27,13 @@
         <!-- The menu -->
 
         <section id="menu-root">
-
             <!-- Menu items in JS -->
         </section>
 
         <!-- Cart -->
-
         <div id="cart-root">
             <section id="cart-section" class="hidden">
-                <h2 class="cart-heading font-semibold  text-2xl text-left pt-4 pr-0 pb-3 pl-2">Your order</h2>
+                <h2 class="font-semibold  text-2xl text-left pt-4 pr-0 pb-3 pl-2">Your order</h2>
                 <div id="cart-items"></div>
                 <div class="flex justify-between pt-4 px-0 pb-12">
                     <h3 class="text-lg pl-2" ->Total price:</h3>
@@ -48,23 +46,21 @@
         </div>
 
         <!-- Order Confirmation -->
-
-        <section class="order-confirmation hidden text-2xl py-15 px-2 text-center" id="order-confirmation">
+        <section class="hidden text-2xl py-15 px-2 text-center" id="order-confirmation">
             <!-- Order confirmation message in JS -->
         </section>
 
     </main>
 
     <!-- Modal Pop Up Form -->
-
     <section
-        class="modal hidden top-[300px] left-[0px] right-[0px] justify-center fixed max-w-[420px] h-[480px] bg-white m-auto shadow-md"
+        class="hidden top-[300px] left-[0px] right-[0px] justify-center fixed max-w-[420px] h-[480px] bg-white m-auto shadow-md"
         id="pay-modal" role="dialog" aria-modal="true">
         <div class="flex justify-end ">
             <button class="flex my-4 mx-4 text-2xl text-[#0E0E0E] font-medium" id="close-pay-modal"><i
                     class="fa-regular fa-circle-xmark"></i></button>
         </div>
-        <form class="inner-modal my-1 mx-auto max-w-sm" id="payment-details-form">
+        <form class="my-1 mx-auto max-w-sm" id="payment-details-form">
 
             <h2 class="text-2xl text-center pt-2 pb-6 px-0"> Enter your card details</h2>
             <label for="name" class="text-base block w-full" autocomplete="name">Your full name</label>
