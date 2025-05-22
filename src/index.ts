@@ -125,6 +125,7 @@ function renderCart() {
 
     if (cart.length === 0) {
         cartSection.classList.add("hidden")
+        cartSection.classList.add("hidden")
         return
     }
 
