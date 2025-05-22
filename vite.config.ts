@@ -4,5 +4,5 @@ export default defineConfig({
     plugins: [
         tailwindcss(),
     ],
-    base: '/dash-and-dine/'
+    base: '/restaurant-ordering-app/'
 })
