@@ -1,16 +1,17 @@
 # Dash and Dine
 
 ## Description
+- Interactive menu and checkout system
+- Add or remove items from an order in real time
+- Automatic total calculation at checkout
+- Responsive design for mobile and desktop users
+- Built with scalability and code maintainability in mind
 
-Dash and Dine is an app that allows customers to order online. Customers can easily add items to their order and pay for the total at checkout. If a customer accidentally adds an item to their order, they can simply remove it. 
-
-### Technologies Used
-
-I orginally used JavaScript for this project, but has now been updated to TypeScript: 
-
-- I was able to build an interactive menu and checkout process
-- The total order can be calculated
-- Use of a flexible data set for menu items
+## Technologies Used
+- TypeScript – for type safety and cleaner, maintainable code
+- Tailwind CSS – for efficient, modern styling and responsive design
+- HTML & CSS – for layout and structure
+- JavaScript – initial implementation before migrating to TypeScript
 
 ## Implementations for future
 
@@ -19,3 +20,6 @@ I orginally used JavaScript for this project, but has now been updated to TypeSc
 - Customisation to items on the menu
 - ~~Mobile responsiveness~~
 - ~~Have quantities of food items added to checkout~~
+
+### Project Background
+This project was originally developed using JavaScript as part of Scrimba's front-end learning path. It has since been refactored to TypeScript to improve scalability, maintainability, and developer experience. The styling was also upgraded to Tailwind CSS for a more consistent and responsive UI.
