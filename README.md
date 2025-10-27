@@ -1,14 +1,12 @@
-# Jimmy's Diner
+# Dash and Dine
 
 ## Description
 
-### What is Jimmy's Diner?
-
-Jimmy's Diner is an app that allows customers to order online. Customers can easily add items to their order and pay for the total at checkout. If a customer accidentally adds an item to their order, they can simply remove it. This project was completed as part of Scrimba's Frontend Career Path.
+Dash and Dine is an app that allows customers to order online. Customers can easily add items to their order and pay for the total at checkout. If a customer accidentally adds an item to their order, they can simply remove it. 
 
 ### Technologies Used
 
-I have used JavaScript for this project, because: 
+I orginally used JavaScript for this project, but has now been updated to TypeScript: 
 
 - I was able to build an interactive menu and checkout process
 - The total order can be calculated
