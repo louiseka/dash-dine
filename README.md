@@ -1,25 +1,55 @@
-# Dash and Dine
+# Dash and Dine 🍽️
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 ## Description
-- Interactive menu and checkout system
-- Add or remove items from an order in real time
+**Dash and Dine** is an interactive menu and checkout system that allows users to add, remove, and manage food items in real time. The application automatically calculates totals at checkout and provides a smooth, responsive experience across mobile and desktop devices.
+
+The project was built with scalability, accessibility, and clean, maintainable code in mind.
+
+## Features
+- Add and remove items from the order in real time
+- Quantity selection for food items
 - Automatic total calculation at checkout
-- Responsive design for mobile and desktop users
-- Built with scalability and code maintainability in mind
+- Fully responsive design for mobile and desktop
+- Accessibility-focused implementation (A11y checks for color contrast and form elements)
+- Scalable, maintainable architecture using TypeScript
+
+## Live Demo
+🔗 **Live Site:** https://dash-dine.netlify.app/
 
 ## Technologies Used
-- TypeScript – for type safety and cleaner, maintainable code
-- Tailwind CSS – for efficient, modern styling and responsive design
-- HTML & CSS – for layout and structure
-- JavaScript – initial implementation before migrating to TypeScript
+- **TypeScript** – Type safety and improved maintainability
+- **Tailwind CSS** – Modern, responsive styling
+- **HTML & CSS** – Layout and structure
+- **JavaScript** – Original implementation prior to TypeScript refactor
 
-## Implementations for future
+## Project Background
+This project was originally developed using **JavaScript** as part of **Scrimba’s Frontend Developer Path**. It has since been fully refactored to **TypeScript** to improve scalability, maintainability, and developer experience.
 
-- ~~Update to TypeScript~~
-- ~~A11y checks for colour contrasts and form elements~~
-- Customisation to items on the menu
-- ~~Mobile responsiveness~~
-- ~~Have quantities of food items added to checkout~~
+Styling was upgraded to **Tailwind CSS** to create a more consistent, accessible, and responsive user interface.
 
-### Project Background
-This project was originally developed using JavaScript as part of Scrimba's front-end learning path. It has since been refactored to TypeScript to improve scalability, maintainability, and developer experience. The styling was also upgraded to Tailwind CSS for a more consistent and responsive UI.
+## Future Improvements
+- Add **customisation options for menu items** (e.g. toppings, sizes, special requests)
+
+_All other planned features — including TypeScript migration, accessibility improvements, mobile responsiveness, and quantity support — have been fully implemented._ ✅
+
+## Getting Started
+To run the project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/dash-and-dine.git
+
+# Navigate into the project directory
+cd dash-and-dine
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
