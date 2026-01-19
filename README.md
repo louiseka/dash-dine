@@ -41,10 +41,10 @@ To run the project locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/dash-and-dine.git
+git clone https://github.com/yourusername/dash-dine.git
 
 # Navigate into the project directory
-cd dash-and-dine
+cd dash-dine
 
 # Install dependencies
 npm install
