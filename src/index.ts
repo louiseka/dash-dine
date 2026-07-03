@@ -252,20 +252,21 @@ cartRoot.addEventListener('click', (e) => {
 completeOrderBtn.addEventListener('click', () => {
     if (getCartTotal() > 0) {
         payModal.classList.remove('hidden')
-        payModal.classList.add('block')
+        payModal.classList.add('flex')
         document.getElementById('name')!.focus()
     }
 })
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !payModal.classList.contains('hidden')) {
+        payModal.classList.remove('flex')
         payModal.classList.add('hidden')
         completeOrderBtn.focus()
     }
 })
 
 document.getElementById('close-pay-modal')!.addEventListener('click', () => {
-    payModal.classList.remove('block')
+    payModal.classList.remove('flex')
     payModal.classList.add('hidden')
     completeOrderBtn.focus()
 })
@@ -275,7 +276,7 @@ paymentDetailsForm.addEventListener('submit', (e) => {
     const paymentFormData = new FormData(paymentDetailsForm)
     const orderName = paymentFormData.get('name')
 
-    payModal.classList.remove('block')
+    payModal.classList.remove('flex')
     payModal.classList.add('hidden')
 
     cartSection.classList.add('hidden')
