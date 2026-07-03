@@ -59,7 +59,7 @@ function renderMenu() {
 
     const menuInnerHtml = menu.map((menuItem) => {
         return `
-        <li class="py-8 px-0 flex justify-between border-b border-gray-200">
+        <li class="py-8 px-0 flex justify-between border-b border-[var(--color-border)]">
             <img alt="${menuItem.alt}" src=${menuItem.image} />
                 <div class="w-[70%]">
                     <p class="text-lg font-medium"> ${menuItem.name} </p> 
@@ -67,7 +67,7 @@ function renderMenu() {
                     <p> £${menuItem.price} </p>
                 </div>
             <button 
-                class="add-btn text-gray-500 text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-[#dedede]" 
+                class="add-btn text-[var(--color-muted)] text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-[var(--color-border)]"
                 aria-label="Add ${menuItem.name} to cart"
                 data-name=${menuItem.name} 
                 data-price=${menuItem.price}> 
@@ -140,8 +140,8 @@ function renderCart() {
                     ${cartItem.menuItem.name} 
                     </p>
                     <div class="pl-5">
-                        <button class="add-item-btn text-[#0E0E0E] text-lg  my-auto mx-0 " aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button> 
-                        <button class="remove-item-btn text-[#0E0E0E] text-lg my-auto mx-0 " aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button> 
+                        <button class="add-item-btn text-[var(--color-text)] text-lg  my-auto mx-0 " aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button>
+                        <button class="remove-item-btn text-[var(--color-text)] text-lg my-auto mx-0 " aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button>
                     </div>
                 </div>
             <p class="items-end "> £${cartItem.price} </p>
@@ -224,6 +224,20 @@ paymentDetailsForm.addEventListener("submit", (e) => {
     orderConfirmation.innerHTML = `
         <p> Thanks, ${orderName}. Your order is on its way!</p>
     `
+})
+
+const themeToggle = document.getElementById("theme-toggle") as HTMLButtonElement
+
+function setTheme(isDark: boolean) {
+    document.documentElement.classList.toggle("dark", isDark)
+    themeToggle.setAttribute("aria-checked", String(isDark))
+    localStorage.setItem("theme", isDark ? "dark" : "light")
+}
+
+setTheme(document.documentElement.classList.contains("dark"))
+
+themeToggle.addEventListener("click", () => {
+    setTheme(themeToggle.getAttribute("aria-checked") !== "true")
 })
 
 renderMenu()

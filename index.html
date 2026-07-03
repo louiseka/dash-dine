@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dash and Dine</title>
+    <script src="./src/theme.ts" type="module"></script>
     <link rel="stylesheet" href="./src/index.css">
     <link rel="icon" type="image/x-icon" href="./Burger-Favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +19,14 @@
 
 <body>
     <header class="text-white">
+        <button type="button" id="theme-toggle" class="theme-toggle" role="switch" aria-checked="false"
+            aria-label="Toggle dark mode">
+            <span class="theme-toggle-track">
+                <i class="fa-solid fa-sun theme-toggle-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-moon theme-toggle-icon" aria-hidden="true"></i>
+                <span class="theme-toggle-thumb"></span>
+            </span>
+        </button>
         <h1 class="text-4xl font-semibold pt-18 pr-0 pb-0 pl-8">Dash and Dine</h1>
         <p class="pl-8">Quick Bites, Big Flavour</p>
     </header>
@@ -40,7 +49,7 @@
                     <p class="text-xl" id="cart-total-price"> </p>
                 </div>
                 <button type="submit"
-                    class="text-white text-base my-0 mx-auto py-4 px-0 w-full font-medium bg-[#065f46] border-0"
+                    class="text-[var(--color-accent-text)] text-base my-0 mx-auto py-4 px-0 w-full font-medium bg-[var(--color-accent)] border-0"
                     id="complete-order-btn"> Complete order</button>
             </section>
         </div>
@@ -56,9 +65,10 @@
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto hidden flex items-center justify-center" id="pay-modal">
 
-        <section class="justify-center px-8 py-4 h-auto bg-white shadow-md" role="dialog" aria-modal="true">
+        <section class="justify-center px-8 py-4 h-auto bg-[var(--color-surface)] text-[var(--color-text)] shadow-md"
+            role="dialog" aria-modal="true">
             <div class="flex justify-end ">
-                <button class="flex my-4 mx-4 text-2xl text-[#0E0E0E] font-medium" id="close-pay-modal"><i
+                <button class="flex my-4 mx-4 text-2xl text-[var(--color-text)] font-medium" id="close-pay-modal"><i
                         class="fa-regular fa-circle-xmark"></i></button>
             </div>
             <form class="my-1 mx-auto max-w-sm" id="payment-details-form">
@@ -66,21 +76,21 @@
                 <h2 class="text-2xl text-center pt-2 pb-6 px-0"> Enter your card details</h2>
                 <label for="name" class="text-base block w-full" autocomplete="name">Your full name</label>
                 <input type="text" id="name" name="name"
-                    class="text-base block py-3 px-3 my-2 mx-0 w-full border border-[#dedede]" placeholder="John Doe"
-                    required>
+                    class="text-base block py-3 px-3 my-2 mx-0 w-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)]"
+                    placeholder="John Doe" required>
 
                 <label for="card-number" class="text-base block w-full">Your card number</label>
                 <input type="text" id="card-number" name="card-number"
-                    class="text-base block py-3 px-3 my-2 mx-0  w-full border border-[#dedede]" placeholder="123456"
-                    maxlength="19" required>
+                    class="text-base block py-3 px-3 my-2 mx-0  w-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)]"
+                    placeholder="123456" maxlength="19" required>
 
                 <label for="cvv" class="text-base block w-full">Your CVV</label>
                 <input type="text" id="cvv" name="cvv"
-                    class="text-base py-3 px-3 my-2 mx-0 block w-full border border-[#dedede]" placeholder="123"
-                    maxlength="3" required>
+                    class="text-base py-3 px-3 my-2 mx-0 block w-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)]"
+                    placeholder="123" maxlength="3" required>
 
                 <button type="submit"
-                    class="mt-8 mx-0 mb-0 py-4 px-0 w-full block font-semibold bg-[#065f46] border-0 text-white"
+                    class="mt-8 mx-0 mb-0 py-4 px-0 w-full block font-semibold bg-[var(--color-accent)] border-0 text-[var(--color-accent-text)]"
                     id="pay-btn">
                     Pay</button>
             </form>
