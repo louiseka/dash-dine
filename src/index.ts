@@ -57,34 +57,55 @@ const cartSection = document.getElementById("cart-section")!
 
 function renderMenu() {
 
-    const menuInnerHtml = menu.map((menuItem) => {
-        return `
-        <li class="py-8 px-0 flex justify-between border-b border-line">
-            <img alt="${menuItem.alt}" src=${menuItem.image} />
-                <div class="w-[70%]">
-                    <p class="text-lg font-medium"> ${menuItem.name} </p> 
-                    <p class="text-xs"> ${menuItem.ingredients} </p>
-                    <p> £${menuItem.price} </p>
-                </div>
-            <button
-                class="add-btn text-muted text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-line cursor-pointer"
-                aria-label="Add ${menuItem.name} to cart"
-                data-name=${menuItem.name} 
-                data-price=${menuItem.price}> 
-                    <i class="fa-solid fa-plus"></i> 
-            </button>
-        </li>
-        `
-    }).join("")
+    const heading = document.createElement("h2")
+    heading.className = "pt-6 pl-2 text-2xl font-medium"
+    heading.textContent = "Our Menu"
 
-    menuRoot.innerHTML = `
-    <h2 class="pt-6 pl-2 text-2xl font-medium"> Our Menu</h2>
-         <p class="pl-2 pb-4"> At Dash and Dine, we believe in getting the basics just right. Take your
-            pick from the menu below: </p>
-         <ul> 
-            ${menuInnerHtml}   
-         </ul>
-    `
+    const intro = document.createElement("p")
+    intro.className = "pl-2 pb-4"
+    intro.textContent = "At Dash and Dine, we believe in getting the basics just right. Take your pick from the menu below:"
+
+    const list = document.createElement("ul")
+
+    for (const menuItem of menu) {
+        const listItem = document.createElement("li")
+        listItem.className = "py-8 px-0 flex justify-between border-b border-line"
+
+        const image = document.createElement("img")
+        image.alt = menuItem.alt
+        image.src = menuItem.image
+
+        const details = document.createElement("div")
+        details.className = "w-[70%]"
+
+        const name = document.createElement("p")
+        name.className = "text-lg font-medium"
+        name.textContent = menuItem.name
+
+        const ingredients = document.createElement("p")
+        ingredients.className = "text-xs"
+        ingredients.textContent = menuItem.ingredients.join(",")
+
+        const price = document.createElement("p")
+        price.textContent = `£${menuItem.price}`
+
+        details.append(name, ingredients, price)
+
+        const addButton = document.createElement("button")
+        addButton.className = "add-btn text-muted text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-line cursor-pointer"
+        addButton.setAttribute("aria-label", `Add ${menuItem.name} to cart`)
+        addButton.dataset.name = menuItem.name
+        addButton.dataset.price = String(menuItem.price)
+
+        const addIcon = document.createElement("i")
+        addIcon.className = "fa-solid fa-plus"
+        addButton.append(addIcon)
+
+        listItem.append(image, details, addButton)
+        list.append(listItem)
+    }
+
+    menuRoot.replaceChildren(heading, intro, list)
 }
 
 menuRoot.addEventListener("click", function (e) {
@@ -127,32 +148,60 @@ function renderCart() {
 
     if (cart.length === 0) {
         cartSection.classList.add("hidden")
-        cartSection.classList.add("hidden")
         return
     }
 
-    const cartInnerHtml = cart.map((cartItem: Order) => {
-        return `
-        <li class="flex justify-between pt-0 px-0 pb-2">
-                <div class="flex items-center">
-                    <p class="text-2xl text-lg font-normal pl-2"> 
-                    <span class="text-lg"> ${cartItem.quantity}x </span> 
-                    ${cartItem.menuItem.name} 
-                    </p>
-                    <div class="pl-5">
-                        <button class="add-item-btn text-ink text-lg my-auto mx-0 cursor-pointer" aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button>
-                        <button class="remove-item-btn text-ink text-lg my-auto mx-0 cursor-pointer" aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button>
-                    </div>
-                </div>
-            <p class="items-end "> £${cartItem.price} </p>
-        </li>        
-    `
-    }).join("")
-    cartItemsContainer.innerHTML = `
-        <ul> 
-            ${cartInnerHtml}
-        </ul>
-    `
+    const list = document.createElement("ul")
+
+    for (const cartItem of cart) {
+        const listItem = document.createElement("li")
+        listItem.className = "flex justify-between pt-0 px-0 pb-2"
+
+        const itemInfo = document.createElement("div")
+        itemInfo.className = "flex items-center"
+
+        const nameLine = document.createElement("p")
+        nameLine.className = "text-2xl text-lg font-normal pl-2"
+
+        const quantitySpan = document.createElement("span")
+        quantitySpan.className = "text-lg"
+        quantitySpan.textContent = `${cartItem.quantity}x`
+
+        nameLine.append(quantitySpan, ` ${cartItem.menuItem.name}`)
+
+        const buttonsWrapper = document.createElement("div")
+        buttonsWrapper.className = "pl-5"
+
+        const addItemBtn = document.createElement("button")
+        addItemBtn.className = "add-item-btn text-ink text-lg my-auto mx-0 cursor-pointer"
+        addItemBtn.setAttribute("aria-label", `Add one more ${cartItem.menuItem.name}`)
+        addItemBtn.dataset.id = String(cartItem.id)
+
+        const addIcon = document.createElement("i")
+        addIcon.className = "fa-solid fa-circle-plus"
+        addItemBtn.append(addIcon)
+
+        const removeItemBtn = document.createElement("button")
+        removeItemBtn.className = "remove-item-btn text-ink text-lg my-auto mx-0 cursor-pointer"
+        removeItemBtn.setAttribute("aria-label", `Remove one ${cartItem.menuItem.name}`)
+        removeItemBtn.dataset.id = String(cartItem.id)
+
+        const removeIcon = document.createElement("i")
+        removeIcon.className = "fa-solid fa-circle-minus"
+        removeItemBtn.append(removeIcon)
+
+        buttonsWrapper.append(addItemBtn, removeItemBtn)
+        itemInfo.append(nameLine, buttonsWrapper)
+
+        const price = document.createElement("p")
+        price.className = "items-end"
+        price.textContent = `£${cartItem.price}`
+
+        listItem.append(itemInfo, price)
+        list.append(listItem)
+    }
+
+    cartItemsContainer.replaceChildren(list)
     document.getElementById("cart-total-price")!.textContent = "£" + getCartTotal()
     cartSection.classList.remove("hidden")
 }
@@ -221,9 +270,10 @@ paymentDetailsForm.addEventListener("submit", (e) => {
     menuRoot.style.display = "none"
     orderConfirmation.classList.remove("hidden")
     orderConfirmation.classList.add("block")
-    orderConfirmation.innerHTML = `
-        <p> Thanks, ${orderName}. Your order is on its way!</p>
-    `
+
+    const confirmationMessage = document.createElement("p")
+    confirmationMessage.textContent = `Thanks, ${orderName}. Your order is on its way!`
+    orderConfirmation.replaceChildren(confirmationMessage)
 })
 
 const themeToggle = document.getElementById("theme-toggle") as HTMLButtonElement
