@@ -1,81 +1,32 @@
 @import "tailwindcss";
 
-:root {
-    --color-bg: #F5F5F5;
+@theme {
+    --font-sans: "Montserrat", sans-serif;
+    --color-canvas: #F5F5F5;
     --color-surface: #FFFFFF;
-    --color-text: #0E0E0E;
+    --color-ink: #0E0E0E;
     --color-muted: #6b7280;
-    --color-border: #dedede;
+    --color-line: #dedede;
     --color-accent: #065f46;
-    --color-accent-text: #FFFFFF;
-    --color-focus-shadow: #8b8b8b;
+    --color-accent-foreground: #FFFFFF;
+    --color-focus: #8b8b8b;
 }
 
 .dark {
-    --color-bg: #121212;
+    --color-canvas: #121212;
     --color-surface: #1E1E1E;
-    --color-text: #F5F5F5;
+    --color-ink: #F5F5F5;
     --color-muted: #9ca3af;
-    --color-border: #3a3a3a;
+    --color-line: #3a3a3a;
     --color-accent: #065f46;
-    --color-accent-text: #FFFFFF;
-    --color-focus-shadow: #000000;
-}
-
-html {
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
-/* Layout */
-
-body {
-    font-family: "Montserrat", sans-serif;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-size: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-main {
-    margin: 0 1.5em;
-}
-
-p {
-    margin: 0;
-}
-
-button {
-    cursor: pointer;
-    font-family: "Montserrat", sans-serif;
+    --color-accent-foreground: #FFFFFF;
+    --color-focus: #000000;
 }
 
 button:hover,
 button:focus,
 button:active {
-    box-shadow: 0px 0px 5px var(--color-focus-shadow);
-}
-
-/* Header */
-
-header {
-    background-color: var(--color-accent);
-    height: 150px;
-    position: relative;
-}
-
-/* Typography */
-h1,
-h2,
-h3 {
-    margin: 0;
+    box-shadow: 0px 0px 5px var(--color-focus);
 }
 
 /* Theme toggle */

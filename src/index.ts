@@ -59,15 +59,15 @@ function renderMenu() {
 
     const menuInnerHtml = menu.map((menuItem) => {
         return `
-        <li class="py-8 px-0 flex justify-between border-b border-[var(--color-border)]">
+        <li class="py-8 px-0 flex justify-between border-b border-line">
             <img alt="${menuItem.alt}" src=${menuItem.image} />
                 <div class="w-[70%]">
                     <p class="text-lg font-medium"> ${menuItem.name} </p> 
                     <p class="text-xs"> ${menuItem.ingredients} </p>
                     <p> £${menuItem.price} </p>
                 </div>
-            <button 
-                class="add-btn text-[var(--color-muted)] text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-[var(--color-border)]"
+            <button
+                class="add-btn text-muted text-2xl w-[50px] h-[50px] my-auto mx-0 rounded-full border border-line cursor-pointer"
                 aria-label="Add ${menuItem.name} to cart"
                 data-name=${menuItem.name} 
                 data-price=${menuItem.price}> 
@@ -140,8 +140,8 @@ function renderCart() {
                     ${cartItem.menuItem.name} 
                     </p>
                     <div class="pl-5">
-                        <button class="add-item-btn text-[var(--color-text)] text-lg  my-auto mx-0 " aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button>
-                        <button class="remove-item-btn text-[var(--color-text)] text-lg my-auto mx-0 " aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button>
+                        <button class="add-item-btn text-ink text-lg my-auto mx-0 cursor-pointer" aria-label="Add one more ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-plus"></i> </button>
+                        <button class="remove-item-btn text-ink text-lg my-auto mx-0 cursor-pointer" aria-label="Remove one ${cartItem.menuItem.name}" data-id="${cartItem.id}"> <i class="fa-solid fa-circle-minus"></i> </button>
                     </div>
                 </div>
             <p class="items-end "> £${cartItem.price} </p>
