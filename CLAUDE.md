@@ -10,6 +10,11 @@ npm run build     # Type-check-free production build (vite build) into dist/
 npm run preview   # Preview the production build locally
 ```
 
+```bash
+npm run format       # Format all files with Prettier (semi: false, per .prettierrc)
+npm run format:check # Check formatting without writing
+```
+
 There is no lint script and no test suite/framework configured in this repo. `tsc` is not run directly (`noEmit: true`, `build` uses Vite/esbuild for transpilation only) — type errors won't fail the build, so check `tsconfig.json` strictness manually if needed (`strict`, `noUnusedLocals`, `noUnusedParameters` are all on).
 
 ## Architecture
